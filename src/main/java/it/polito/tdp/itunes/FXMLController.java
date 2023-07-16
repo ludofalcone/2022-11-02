@@ -6,8 +6,10 @@ package it.polito.tdp.itunes;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import it.polito.tdp.itunes.model.Model;
+import it.polito.tdp.itunes.model.Track;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -32,7 +34,7 @@ public class FXMLController {
     private Button btnPlaylist; // Value injected by FXMLLoader
 
     @FXML // fx:id="cmbGenere"
-    private ComboBox<?> cmbGenere; // Value injected by FXMLLoader
+    private ComboBox<String> cmbGenere; // Value injected by FXMLLoader
 
     @FXML // fx:id="txtDTOT"
     private TextField txtDTOT; // Value injected by FXMLLoader
@@ -53,7 +55,14 @@ public class FXMLController {
 
     @FXML
     void doCreaGrafo(ActionEvent event) {
-
+    	String genere=this.cmbGenere.getValue();
+    	int min=Integer.parseInt(this.txtMin.getText());
+    	int max=Integer.parseInt(this.txtMax.getText());
+    	this.model.creaGrafo(genere, min, max);
+    	this.txtResult.appendText("#vertici: "+this.model.nVertici()+ "\n#archi: "+this.model.nArchi());
+    	for(Set<Track> t: this.model.compconnesse()) {
+    		this.txtResult.appendText(t+"\n");
+    	}
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
@@ -70,6 +79,7 @@ public class FXMLController {
     
     public void setModel(Model model) {
     	this.model = model;
+    	this.cmbGenere.getItems().addAll(this.model.getGeneri());
     }
 
 }

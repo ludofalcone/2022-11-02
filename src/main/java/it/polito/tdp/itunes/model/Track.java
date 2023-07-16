@@ -7,6 +7,7 @@ public class Track {
 	private int milliseconds;
 	private int bytes;
 	private double unitPrice;
+//	private int numplaylist;
 	
 	public Track(Integer trackId, String name, String composer, int milliseconds, int bytes, double unitPrice) {
 		super();
@@ -84,8 +85,22 @@ public class Track {
 	public String toString() {
 		return name;
 	}
+
+	/**
+	 * @return the numplaylist
+	 */
+/*	public int getNumplaylist() {
+		return numplaylist;
+	}
+
+	/**
+	 * @param numplaylist the numplaylist to set
+	 */
+/*	public void setNumplaylist(int numplaylist) {
+		this.numplaylist = numplaylist;
+	}
 	
 	
-	
+	*/
 	
 }
