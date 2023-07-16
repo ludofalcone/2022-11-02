@@ -72,6 +72,6 @@ public class Model {
 		ConnectivityInspector<Track,DefaultEdge> inspector= new ConnectivityInspector<Track, DefaultEdge>(this.grafo);
 		return inspector.connectedSets();
 	}
-	
+	int m;
 	
 }
